@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1C60A4D8-E616-4BB7-B60F-1B4E417244C7}"
+	ProjectSection(SolutionItems) = preProject
+		lib\OTAPI.dll = lib\OTAPI.dll
+		lib\TerrariaServer.dll = lib\TerrariaServer.dll
+		lib\TShockAPI.dll = lib\TShockAPI.dll
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForceWorldEvent", "ForceWorldEvent\ForceWorldEvent.csproj", "{589B49EF-4614-470E-8572-4FCB6B37E8CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartyOnJoin", "PartyOnJoin\PartyOnJoin.csproj", "{46A3B914-11D2-43FB-AB61-4C21607A1406}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowPPU", "ShowPPU\ShowPPU.csproj", "{44599E2A-106D-4783-9511-B9854CEE3B5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPBack", "TPBack\TPBack.csproj", "{5F057542-AECC-4E0A-834C-82B896ED2357}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8BBBAA78-3F85-4BFC-992C-1A441B541938}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{589B49EF-4614-470E-8572-4FCB6B37E8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589B49EF-4614-470E-8572-4FCB6B37E8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589B49EF-4614-470E-8572-4FCB6B37E8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589B49EF-4614-470E-8572-4FCB6B37E8CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A3B914-11D2-43FB-AB61-4C21607A1406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A3B914-11D2-43FB-AB61-4C21607A1406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A3B914-11D2-43FB-AB61-4C21607A1406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A3B914-11D2-43FB-AB61-4C21607A1406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44599E2A-106D-4783-9511-B9854CEE3B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44599E2A-106D-4783-9511-B9854CEE3B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44599E2A-106D-4783-9511-B9854CEE3B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44599E2A-106D-4783-9511-B9854CEE3B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F057542-AECC-4E0A-834C-82B896ED2357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F057542-AECC-4E0A-834C-82B896ED2357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F057542-AECC-4E0A-834C-82B896ED2357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F057542-AECC-4E0A-834C-82B896ED2357}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {759CA2C6-2A53-4737-BA3D-B5CEDCB1CF82}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,88 @@
+﻿# Command: /spawn
+
+Debug: [TPBack] Set upcoming back pos (45390, 8358) for "Silvarren" (0): OnSendData (packet TileSendSquare, remote 0, ignore -1), held "", selected "Zenith".
+Debug: [TPBack] Set back pos (45390, 8358) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (67152, 9136), flags 0, style 1, extra 0), held "", selected "Zenith".
+
+# Command: /home
+
+Debug: [TPBack] Set back pos (45390, 8358) for "Silvarren" (0): OnSpawn (RecallFromItem), held "", selected "Zenith".
+
+# Command: /tp
+
+Debug: [TPBack] Set upcoming back pos (61553.406, 6365.5107) for "Silvarren" (0): OnSendData (packet TileSendSquare, remote 0, ignore -1), held "", selected "Zenith".
+Debug: [TPBack] Set back pos (61553.406, 6365.5107) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (62444.055, 6694), flags 0, style 1, extra 0), held "", selected "Zenith".
+
+# Command: /tpnpc
+
+Debug: [TPBack] Set upcoming back pos (67150, 9126) for "Silvarren" (0): OnSendData (packet TileSendSquare, remote 0, ignore -1), held "", selected "Zenith".
+Debug: [TPBack] Set back pos (67150, 9126) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (66667.26, 8744), flags 0, style 1, extra 0), held "", selected "Zenith".
+
+# Command: /tppos
+
+Debug: [TPBack] Set upcoming back pos (66667.26, 8822) for "Silvarren" (0): OnSendData (packet TileSendSquare, remote 0, ignore -1), held "", selected "Zenith".
+Debug: [TPBack] Set back pos (66667.26, 8822) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (992, 992), flags 0, style 1, extra 0), held "", selected "Zenith".
+
+# Item: Shellphone (Home) / Ice Mirror / Magic Mirror
+
+Debug: [TPBack] Set back pos (68395.52, 9190) for "Silvarren" (0): OnSpawn (RecallFromItem), held "", selected "Shellphone (Home)".
+
+# Item: Teleportation Potion
+
+Debug: [TPBack] Set upcoming back pos (67157.42, 9126) for "Silvarren" (0): OnGetData (packet TeleportationPotion, type 0), held "", selected "Teleportation Potion".
+Debug: [TPBack] Set back pos (67157.42, 9126) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (57070, 22486), flags 0, style 2, extra 0), held "", selected "Teleportation Potion".
+
+# Item: Shellphone (Ocean) / Magic Conch
+
+Debug: [TPBack] Set upcoming back pos (4382, 6564) for "Silvarren" (0): OnGetData (packet TeleportationPotion, type 1), held "", selected "Shellphone (Ocean)".
+Debug: [TPBack] Set back pos (4382, 6564) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (131230, 7142), flags 0, style 5, extra 0), held "", selected "Shellphone (Ocean)".
+
+# Item: Shellphone (Underworld) / Demon Conch
+
+Debug: [TPBack] Set upcoming back pos (131230, 7142) for "Silvarren" (0): OnGetData (packet TeleportationPotion, type 2), held "", selected "Shellphone (Underworld)".
+Debug: [TPBack] Set back pos (131230, 7142) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (67950, 35654), flags 0, style 7, extra 0), held "", selected "Shellphone (Underworld)".
+
+# Item: Shellphone (Spawn)
+
+Debug: [TPBack] Set upcoming back pos (67950, 35654) for "Silvarren" (0): OnGetData (packet TeleportationPotion, type 3), held "", selected "Shellphone (Spawn)".
+Debug: [TPBack] Set back pos (67950, 35654) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (67150, 9126), flags 0, style 11, extra 0), held "", selected "Shellphone (Spawn)".
+
+# Item: Recall Potion
+
+Debug: [TPBack] Set back pos (71353.88, 8870) for "Silvarren" (0): OnSpawn (RecallFromItem), held "", selected "Recall Potion".
+
+# Item: Potion of Recall, initial recall
+
+Debug: [TPBack] Set back pos (68713.85, 9174) for "Silvarren" (0): OnSpawn (ReviveFromDeath), held "", selected "Potion of Return".
+
+# Item: Potion of Recall, return portal
+
+Debug: [TPBack] Set back pos (67185.234, 9126) for "Silvarren" (0): OnTeleport (target 0 (67676.49, 9126), flags 0, style 8, extra -1), held "", selected "Potion of Return".
+Debug: [TPBack] Ignored server relayed teleport for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore 0, target 0 (67676.49, 9126), flags 0, style 8, extra 0).
+
+# Item: Rod of Discord / Rod of Purity
+
+Debug: [TPBack] Ignored client rod/hook teleport from "Silvarren" (0): OnTeleport (target 0 (66196, 8817), flags 0, style 1, extra -1).
+Debug: [TPBack] Ignored server relayed teleport for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore 0, target 0 (66196, 8817), flags 0, style 1, extra 0).
+
+# Item: Hook of Dissonance
+
+Debug: [TPBack] Ignored client rod/hook teleport from "Silvarren" (0): OnTeleport (target 0 (66428, 8963), flags 0, style 10, extra -1).
+Debug: [TPBack] Ignored server relayed teleport for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore 0, target 0 (66428, 8963), flags 0, style 10, extra 0).
+
+# Item: Wormhole Potion
+
+Debug: [TPBack] Set upcoming back pos (61558.047, 6429.614) for "Silvarren" (0): OnTeleport (target 0 (49924.445, 6486.3745), flags 2, style 3, extra -1), held "", selected "Zenith".
+Debug: [TPBack] Set back pos (61558.047, 6429.614) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (49924.445, 6486.3745), flags 0, style 3, extra 0), held "", selected "Zenith".
+
+# Pylon
+
+Debug: [TPBack] Set upcoming back pos (60616.832, 6486) for "Silvarren" (0): OnNetModule (module TeleportPylon), held "", selected "Zenith".
+Debug: [TPBack] Set back pos (60616.832, 6486) for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (55976, 32888), flags 0, style 9, extra 0), held "", selected "Zenith".
+
+# Teleporter
+
+Debug: [TPBack] Unknown back pos for "Silvarren" (0): OnSendData (packet Teleport, remote -1, ignore -1, target 0 (116388.516, 7798), flags 0, style 0, extra 0).
+
+# Respawn after death
+
+Debug: [TPBack] Set back pos (68317.2, 8870) for "Silvarren" (0): OnSpawn (ReviveFromDeath), held "", selected "Zenith".
