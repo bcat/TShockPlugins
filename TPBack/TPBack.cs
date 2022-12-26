@@ -27,7 +27,8 @@ namespace BcatTShockPlugins
     public class TPBack : TerrariaPlugin
     {
         /// <summary>
-        /// Packet 65 (Teleport) flag indicating that the target is an NPC rather than a player.
+        /// Flag indicating that the target of a <see cref="PacketTypes.Teleport"><c>Teleport</c>
+        /// packet</see> is an NPC rather than a player.
         /// </summary>
         /// <seealso href="https://tshock.readme.io/docs/multiplayer-packet-structure#player-npc-teleport-65"/>
         private const byte TELEPORT_FLAGS_NPC = 0b00000001;
@@ -136,8 +137,8 @@ namespace BcatTShockPlugins
         /// <item><description>Item use: Hook of Dissonance [ignored]</description></item>
         /// <item><description>Item use: Rod of Discord / Rod of Harmony
         /// [ignored]</description></item>
-        /// <item><description>Item use: Shellphone (Ocean)</description></item>
-        /// <item><description>Item use: Shellphone (Spawn) / Magic Conch</description></item>
+        /// <item><description>Item use: Shellphone (Ocean) / Magic Conch</description></item>
+        /// <item><description>Item use: Shellphone (Spawn)</description></item>
         /// <item><description>Item use: Shellphone (Underworld) / Demon Conch</description></item>
         /// <item><description>Item use: Teleportation Potion</description></item>
         /// <item><description>Item use: Wormhole Potion</description></item>
