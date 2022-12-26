@@ -22,6 +22,19 @@ namespace BcatTShockPlugins
 {
     /// <summary>
     /// Plugin that adds a <c>/back</c> command to teleport to the player's previous position.
+    /// 
+    /// <para>Defines the following commands:</para>
+    /// 
+    /// <list type="bullet">
+    /// <item><description><c>/back</c></description>: Teleports you back to your previous location
+    /// (before your last teleport).</item>
+    /// </list>
+    /// 
+    /// <para>Uses the following permissions:</para>
+    /// 
+    /// <list type="bullet">
+    /// <item><description><c>bcat.tp.back</c></description>: Use the <c>/back</c> command.</item>
+    /// </list>
     /// </summary>
     [ApiVersion(2, 1)]
     public class TPBack : TerrariaPlugin
@@ -53,7 +66,7 @@ namespace BcatTShockPlugins
 
         public override void Initialize()
         {
-            Commands.ChatCommands.Add(new Command("bcat.tpback.allow", OnBackCommand, "back")
+            Commands.ChatCommands.Add(new Command("bcat.tp.back", OnBackCommand, "back")
             {
                 AllowServer = false,
                 HelpText
@@ -96,7 +109,8 @@ namespace BcatTShockPlugins
         }
 
         /// <summary>
-        /// Saves back position in response to respawns at the player's home location. For example:
+        /// Saves back position in response to client spawns at the player's home location. For
+        /// example:
         /// 
         /// <list type="bullet">
         /// <item><description>Game event: Respawn after death</description></item>
@@ -110,8 +124,7 @@ namespace BcatTShockPlugins
         /// 
         /// <param name="sender">ignored.</param>
         /// <param name="e">arguments from received
-        /// <see cref="PacketTypes.PlayerSpawn"><c>PlayerSpawn</c>
-        /// packet</see>.</param>
+        /// <see cref="PacketTypes.PlayerSpawn"><c>PlayerSpawn</c> packet</see>.</param>
         private static void OnSpawn(object? sender, GetDataHandlers.SpawnEventArgs e)
         {
             // On connect, the client sends a PlayerSpawn packet that we ignore since there's no
@@ -127,8 +140,8 @@ namespace BcatTShockPlugins
         }
 
         /// <summary>
-        /// Saves back position in response to server teleport packets. This covers all
-        /// teleportation to destinations other than the players's home location. For example:
+        /// Saves back position in response to server teleports. This covers all teleportation to
+        /// destinations other than the players's home location. For example:
         /// 
         /// <list type="bullet">
         /// <item><description>Game event: Pylon network activation</description></item>
