@@ -113,15 +113,19 @@ namespace BcatTShockPlugins
         /// packet</see>.</param>
         private static void OnSpawn(object? sender, GetDataHandlers.SpawnEventArgs e)
         {
+            String debugContext
+                = $"OnSpawn (target {e.PlayerId}, dest ({e.SpawnX}, {e.SpawnY}), timer {e.RespawnTimer}, context {e.SpawnContext})";
+
             // On connect, the client appears to send a PlayerSpawn packet with type RecallFromItem
             // while the player's position is still (0, 0). Weird, but we just ignore it.
             if (e.SpawnContext == PlayerSpawnContext.SpawningIntoWorld
                 || e.Player.X == 0 && e.Player.Y == 0)
             {
+                TShock.Log.ConsoleDebug($"[TPBack] Ignored initial spawn: {debugContext}.");
                 return;
             }
 
-            SaveBackPosition(e.Player, $"OnSpawn ({e.SpawnContext})");
+            SaveBackPosition(e.Player, debugContext);
         }
 
         /// <summary>
@@ -166,7 +170,7 @@ namespace BcatTShockPlugins
             int extra = e.number6;
 
             String debugContext
-                = $"OnSendData (packet Teleport, remote {e.remoteClient}, ignore {e.ignoreClient}, flags {flags}, target {target}, dest ({destX}, {destY}), style {style}, extra {extra})";
+                = $"OnSendData (Teleport, remote {e.remoteClient}, ignore {e.ignoreClient}, target {target}, dest ({destX}, {destY}), flags {flags}, style {style}, extra {extra})";
 
             // We only handle teleports targeting players, not NPCs.
             if ((flags & TELEPORT_FLAGS_NPC) != 0)
