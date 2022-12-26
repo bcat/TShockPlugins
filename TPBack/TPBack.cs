@@ -113,10 +113,15 @@ namespace BcatTShockPlugins
         /// packet</see>.</param>
         private static void OnSpawn(object? sender, GetDataHandlers.SpawnEventArgs e)
         {
-            if (e.SpawnContext != PlayerSpawnContext.SpawningIntoWorld)
+            // On connect, the client appears to send a PlayerSpawn packet with type RecallFromItem
+            // while the player's position is still (0, 0). Weird, but we just ignore it.
+            if (e.SpawnContext == PlayerSpawnContext.SpawningIntoWorld
+                || e.Player.X == 0 && e.Player.Y == 0)
             {
-                SaveBackPosition(e.Player, $"OnSpawn ({e.SpawnContext})");
+                return;
             }
+
+            SaveBackPosition(e.Player, $"OnSpawn ({e.SpawnContext})");
         }
 
         /// <summary>
