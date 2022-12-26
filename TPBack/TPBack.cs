@@ -267,7 +267,7 @@ namespace BcatTShockPlugins
         /// </summary>
         /// 
         /// <param name="i">the player index to look up. Not required to be in bounds, as it may
-        /// come directly from a received packet.</param>
+        /// come directly from an unsanitized packet.</param>
         /// <returns>the player with index <paramref name="i"/>, or <see langword="null"/> if no
         /// such player exists.</returns>
         private static TSPlayer? GetPlayer(int i)
