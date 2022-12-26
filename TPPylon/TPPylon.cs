@@ -19,7 +19,7 @@ using Terraria.GameContent;
 using TerrariaApi.Server;
 using TShockAPI;
 
-namespace BcatTShockPlugins
+namespace Bcat.TShockPlugins
 {
     /// <summary>
     /// Plugin that adds a <c>/pylon</c> command to teleport the player to the specified pylon.

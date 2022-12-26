@@ -16,7 +16,7 @@ using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
 
-namespace BcatTShockPlugins
+namespace Bcat.TShockPlugins
 {
     [ApiVersion(2, 1)]
     public class ForceWorldEvent : TerrariaPlugin

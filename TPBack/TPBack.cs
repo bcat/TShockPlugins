@@ -19,7 +19,7 @@ using Terraria.ID;
 using TerrariaApi.Server;
 using TShockAPI;
 
-namespace BcatTShockPlugins
+namespace Bcat.TShockPlugins
 {
     /// <summary>
     /// Plugin that adds a <c>/back</c> command to teleport to the player's previous position.

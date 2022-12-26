@@ -16,7 +16,7 @@ using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
 
-namespace BcatTShockPlugins
+namespace Bcat.TShockPlugins
 {
     /// <summary>
     /// Plugin that automatically adds players to the correct party on join. (Currently hardcoded to
