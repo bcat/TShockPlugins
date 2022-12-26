@@ -13,7 +13,6 @@
 // PERFORMANCE OF THIS SOFTWARE.
 
 using Microsoft.Xna.Framework;
-using System.Runtime.InteropServices;
 using Terraria;
 using Terraria.ID;
 using TerrariaApi.Server;
