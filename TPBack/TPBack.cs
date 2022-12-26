@@ -13,6 +13,7 @@
 // PERFORMANCE OF THIS SOFTWARE.
 
 using Microsoft.Xna.Framework;
+using System.Runtime.InteropServices;
 using Terraria;
 using Terraria.ID;
 using TerrariaApi.Server;
@@ -58,7 +59,7 @@ namespace BcatTShockPlugins
         private const string PERMISSION = "bcat.tp.back";
 
         public override string Name => "TPBack";
-        public override Version Version => new(0, 1);
+        public override Version Version => new(1, 0);
         public override string Author => "Jonathan Rascher";
         public override string Description
             => "Plugin that adds a /back command to teleport to the player's previous position.";
@@ -115,7 +116,13 @@ namespace BcatTShockPlugins
                 return;
             }
 
-            e.Player.Teleport(backPositions[i].X, backPositions[i].Y);
+            float x = backPositions[i].X;
+            float y = backPositions[i].Y;
+
+            TShock.Log.ConsoleDebug(
+                $"[TPBack] Teleporting \"{e.Player.Name}\" ({e.Player.Index}) back to ({x}, {y}).");
+
+            e.Player.Teleport(x, y);
             e.Player.SendSuccessMessage("Teleported back to your previous location.");
         }
 

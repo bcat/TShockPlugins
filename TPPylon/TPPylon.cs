@@ -64,7 +64,7 @@ namespace BcatTShockPlugins
         };
 
         public override string Name => "TPPylon";
-        public override Version Version => new(0, 1);
+        public override Version Version => new(1, 0);
         public override string Author => "Jonathan Rascher";
         public override string Description
             => "Plugin that adds a /pylon command to teleport the player to the specified pylon.";
@@ -92,7 +92,7 @@ namespace BcatTShockPlugins
                 e.Player.SendErrorMessage(
                     $"Invalid syntax. Proper syntax: {Commands.Specifier}pylon <pylon type>.");
                 e.Player.SendErrorMessage(
-                    $"Valid pylon types: {String.Join(", ", pylonTypes.Select(type => type.Key))}.");
+                    $"Valid pylon types: {String.Join(", ", pylonTypes.Select(t => t.Key))}.");
                 return;
             }
 
@@ -101,7 +101,7 @@ namespace BcatTShockPlugins
             if (matches.Count == 0)
             {
                 e.Player.SendErrorMessage(
-                    $"Invalid pylon type. Valid pylon types: {String.Join(", ", pylonTypes.Select(type => type.Key))}.");
+                    $"Invalid pylon type. Valid pylon types: {String.Join(", ", pylonTypes.Select(t => t.Key))}.");
                 return;
             }
             if (matches.Count > 1)
@@ -118,7 +118,7 @@ namespace BcatTShockPlugins
             // via nonstandard means. For simplicity, we always choose the first pylon of a given
             // type that we find.
             //
-            // TODO(bcat): Cycle pylons from left to right if multiple matches are found.
+            // TODO(bcat): Perhaps we should cycle from left to right if multiple matches are found?
             TeleportPylonInfo pylon
                 = Main.PylonSystem.Pylons.Find(p => p.TypeOfPylon == tpPylonType);
             if (pylon.PositionInTiles == Point16.Zero)
@@ -128,7 +128,7 @@ namespace BcatTShockPlugins
             }
 
             TShock.Log.ConsoleDebug(
-                $"Teleporting \"{e.Player.Name}\" ({e.Player.Index}) to {pylon.TypeOfPylon} pylon at tile ({pylon.PositionInTiles.X}, {pylon.PositionInTiles.Y}).");
+                $"[TPPylon] Teleporting \"{e.Player.Name}\" ({e.Player.Index}) to {pylon.TypeOfPylon} pylon at tile ({pylon.PositionInTiles.X}, {pylon.PositionInTiles.Y}).");
 
             Vector2 pylonCoords = pylon.PositionInTiles.ToWorldCoordinates();
             e.Player.Teleport(pylonCoords.X, pylonCoords.Y);
