@@ -113,19 +113,16 @@ namespace BcatTShockPlugins
         /// packet</see>.</param>
         private static void OnSpawn(object? sender, GetDataHandlers.SpawnEventArgs e)
         {
-            String debugContext
-                = $"OnSpawn (target {e.PlayerId}, dest ({e.SpawnX}, {e.SpawnY}), timer {e.RespawnTimer}, context {e.SpawnContext})";
-
-            // On connect, the client appears to send a PlayerSpawn packet with type RecallFromItem
-            // while the player's position is still (0, 0). Weird, but we just ignore it.
-            if (e.SpawnContext == PlayerSpawnContext.SpawningIntoWorld
-                || e.Player.X == 0 && e.Player.Y == 0)
+            // On connect, the client sends a PlayerSpawn packet that we ignore since there's no
+            // meaningful previous position to save.
+            if (!e.Player.Active)
             {
-                TShock.Log.ConsoleDebug($"[TPBack] Ignored initial spawn: {debugContext}.");
+                TShock.Log.ConsoleDebug(
+                    $"[TPBack] Ignored initial spawn for \"{e.Player.Name}\" ({e.PlayerId}).");
                 return;
             }
 
-            SaveBackPosition(e.Player, debugContext);
+            SaveBackPosition(e.Player, "Recv PlayerSpawn");
         }
 
         /// <summary>
@@ -170,7 +167,7 @@ namespace BcatTShockPlugins
             int extra = e.number6;
 
             String debugContext
-                = $"OnSendData (Teleport, remote {e.remoteClient}, ignore {e.ignoreClient}, target {target}, dest ({destX}, {destY}), flags {flags}, style {style}, extra {extra})";
+                = $"Send Teleport (remote {e.remoteClient}, ignore {e.ignoreClient}, target {target}, dest ({destX}, {destY}), flags {flags}, style {style}, extra {extra})";
 
             // We only handle teleports targeting players, not NPCs.
             if ((flags & TELEPORT_FLAGS_NPC) != 0)
@@ -179,7 +176,8 @@ namespace BcatTShockPlugins
                 return;
             }
 
-            // If we're not teleporting an NPC, the target ID must be the teleported player.
+            // If we're not teleporting an NPC, the target ID must be the teleported player. (Since
+            // the server is sending this packet, we don't need to check that the player is active.)
             TSPlayer? player = GetPlayer(target);
             if (player == null)
             {
