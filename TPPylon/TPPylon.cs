@@ -96,22 +96,22 @@ namespace BcatTShockPlugins
                 return;
             }
 
-            var pylonTypeMatches = pylonTypes
+            var matches = pylonTypes
                 .Where(t => t.Key.StartsWith(e.Parameters[0].ToLowerInvariant())).ToList();
-            if (pylonTypeMatches.Count == 0)
+            if (matches.Count == 0)
             {
                 e.Player.SendErrorMessage(
                     $"Invalid pylon type. Valid pylon types: {String.Join(", ", pylonTypes.Select(type => type.Key))}.");
                 return;
             }
-            if (pylonTypeMatches.Count > 1)
+            if (matches.Count > 1)
             {
-                e.Player.SendMultipleMatchError(pylonTypeMatches.Select(t => t.Key));
+                e.Player.SendMultipleMatchError(matches.Select(t => t.Key));
                 return;
             }
 
-            string pylonType = pylonTypeMatches.Single().Key;
-            TeleportPylonType tpPylonType = pylonTypeMatches.Single().Value;
+            string pylonType = matches.Single().Key;
+            TeleportPylonType tpPylonType = matches.Single().Value;
 
             // Vanilla Terraria does not allow *placing* more than one of the same pylon, though it
             // will allow arbitrarily many pylons of the same type to be *used* if they are placed
