@@ -18,6 +18,10 @@ using TShockAPI;
 
 namespace BcatTShockPlugins
 {
+    /// <summary>
+    /// Plugin that automatically adds players to the correct party on join. (Currently hardcoded to
+    /// assign all players to the green party.)
+    /// </summary>
     [ApiVersion(2, 1)]
     public class PartyOnJoin : TerrariaPlugin
     {
@@ -29,7 +33,7 @@ namespace BcatTShockPlugins
         public override Version Version => new(0, 1);
         public override string Author => "Jonathan Rascher";
         public override string Description
-            => "Plugin that automatically adds players to the best party on join";
+            => "Plugin that automatically adds players to the correct party on join.";
 
         public PartyOnJoin(Main game) : base(game) { }
 
@@ -47,8 +51,18 @@ namespace BcatTShockPlugins
             base.Dispose(disposing);
         }
 
-        // Listen for PlayerUpdate packets since that's the earliest we can change the player's team
-        // and expect the change to stick.
+        /// <summary>
+        /// Checks if we're already set the party for a connecting player and assigns them to the
+        /// correct party if not.
+        /// 
+        /// <para>We listen for <see cref="PacketTypes.PlayerUpdate"><c>PlayerUpdate</c>
+        /// packets</see> since that's the earliest we can change the player's team and expect the
+        /// change to stick.</para>
+        /// </summary>
+        /// 
+        /// <param name="sender">ignored.</param>
+        /// <param name="e">arguments from received
+        /// <see cref="PacketTypes.PlayerUpdate"><c>PlayerUpdate</c> packet</see>.</param>
         private void OnPlayerUpdate(object? sender, GetDataHandlers.PlayerUpdateEventArgs e)
         {
             if (e.Player.GetData<bool>(PLAYER_DATA_SET_TEAM))
@@ -56,9 +70,11 @@ namespace BcatTShockPlugins
                 return;
             }
 
+            // TODO(bcat): Make the team selection configurable. It'd be nice to have three tiers of
+            // config: player assignments, group assignments, and default assignment.
             e.Player.SetTeam(GREEN_TEAM);
             e.Player.SetData(PLAYER_DATA_SET_TEAM, true);
-            TShock.Log.ConsoleInfo($"[PartyOnJoin] Set player team to green: {e.Player.Name}");
+            TShock.Log.ConsoleInfo($"[PartyOnJoin] Set team to green for \"{e.Player.Name}\".");
         }
     }
 }
