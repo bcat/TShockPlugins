@@ -25,15 +25,21 @@ namespace BcatTShockPlugins
     /// 
     /// <para>Defines the following commands:</para>
     /// 
-    /// <list type="bullet">
-    /// <item><description><c>/back</c></description>: Teleports you back to your previous location
-    /// (before your last teleport).</item>
+    /// <list type="table">
+    /// <item>
+    ///     <term><c>/back</c></term>
+    ///     <description>Teleports you back to your previous location(before your last
+    ///     teleport).</description>
+    /// </item>
     /// </list>
     /// 
     /// <para>Uses the following permissions:</para>
     /// 
-    /// <list type="bullet">
-    /// <item><description><c>bcat.tp.back</c></description>: Use the <c>/back</c> command.</item>
+    /// <list type="table">
+    /// <item>
+    ///     <term><c>bcat.tp.back</c></term>
+    ///     <description>Use the <c>/back</c> command.</description>
+    /// </item>
     /// </list>
     /// </summary>
     [ApiVersion(2, 1)]
@@ -45,6 +51,11 @@ namespace BcatTShockPlugins
         /// </summary>
         /// <seealso href="https://tshock.readme.io/docs/multiplayer-packet-structure#player-npc-teleport-65"/>
         private const byte TELEPORT_FLAGS_NPC = 0b00000001;
+
+        /// <summary>
+        /// TShock permission to use the <c>/back</c> command.
+        /// </summary>
+        private const string PERMISSION = "bcat.tp.back";
 
         public override string Name => "TPBack";
         public override Version Version => new(0, 1);
@@ -66,7 +77,7 @@ namespace BcatTShockPlugins
 
         public override void Initialize()
         {
-            Commands.ChatCommands.Add(new Command("bcat.tp.back", OnBackCommand, "back")
+            Commands.ChatCommands.Add(new Command(PERMISSION, OnBackCommand, "back")
             {
                 AllowServer = false,
                 HelpText

@@ -79,7 +79,6 @@ namespace BcatTShockPlugins
             }
 
             List<TSPlayer> otherPlayers = TSPlayer.FindByNameOrID(search);
-
             switch (otherPlayers.Count)
             {
                 case 1:
@@ -123,11 +122,9 @@ namespace BcatTShockPlugins
         private static void SendPPUMessage(TSPlayer player, Dictionary<string, bool> ppus)
         {
             player.SendInfoMessage(
-                "Active: " + string.Join(
-                    ", ", ppus.Where(ppu => ppu.Value).Select(ppu => ppu.Key)));
+                $"Active: {string.Join(", ", ppus.Where(p => p.Value).Select(p => p.Key))}");
             player.SendInfoMessage(
-                "Inactive: " + string.Join(
-                    ", ", ppus.Where(ppu => !ppu.Value).Select(ppu => ppu.Key)));
+                $"Inactive: {string.Join(", ", ppus.Where(p => !p.Value).Select(p => p.Key))}");
         }
     }
 }

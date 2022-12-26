@@ -40,6 +40,7 @@ namespace BcatTShockPlugins
                 HelpText = "Toggles a forced world event on or off.",
             });
 
+            // TODO(bcat): Add config to automatically force events on server startup.
             ServerApi.Hooks.GameUpdate.Register(this, OnGameUpdate);
         }
 
