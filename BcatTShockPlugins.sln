@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8BBBAA78-3F85-4BFC-992C-1A441B541938}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1C60A4D8-E616-4BB7-B60F-1B4E417244C7}"
 	ProjectSection(SolutionItems) = preProject
 		lib\OTAPI.dll = lib\OTAPI.dll
@@ -18,13 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowPPU", "ShowPPU\ShowPPU.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPBack", "TPBack\TPBack.csproj", "{5F057542-AECC-4E0A-834C-82B896ED2357}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8BBBAA78-3F85-4BFC-992C-1A441B541938}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		LICENSE.txt = LICENSE.txt
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPPylon", "TPPylon\TPPylon.csproj", "{D2E0C2AA-7B4E-4A67-8E9D-7851857C922E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPPylon", "TPPylon\TPPylon.csproj", "{D2E0C2AA-7B4E-4A67-8E9D-7851857C922E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
