@@ -25,7 +25,7 @@ namespace Bcat.TShockPlugins
     [ApiVersion(2, 1)]
     public class PartyOnJoin : TerrariaPlugin
     {
-        private const string PLAYER_DATA_SET_TEAM = "BcatTShockPlugins.PartyOnJoin.setTeam";
+        private const string PLAYER_DATA_SET_TEAM = "Bcat.TShockPlugins.PartyOnJoin.setTeam";
 
         private const int GREEN_TEAM = 2;
 
@@ -39,6 +39,7 @@ namespace Bcat.TShockPlugins
 
         public override void Initialize()
         {
+            // TODO(bcat): This works, but is it actually the optimal hook to use? Experiment a bit.
             GetDataHandlers.PlayerUpdate += OnPlayerUpdate;
         }
 
@@ -71,7 +72,8 @@ namespace Bcat.TShockPlugins
             }
 
             // TODO(bcat): Make the team selection configurable. It'd be nice to have three tiers of
-            // config: player assignments, group assignments, and default assignment.
+            // config: user assignments, group assignments, and default assignment. (That probably
+            // means we need to wait for *login* to set the team, not just *join*.)
             e.Player.SetTeam(GREEN_TEAM);
             e.Player.SetData(PLAYER_DATA_SET_TEAM, true);
             TShock.Log.ConsoleInfo($"[PartyOnJoin] Set team to green for \"{e.Player.Name}\".");

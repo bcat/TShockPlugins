@@ -34,6 +34,7 @@ namespace Bcat.TShockPlugins
 
         public override void Initialize()
         {
+            // TODO(bcat): These command names are ugly and unintuitive. Choose better ones.
             Commands.ChatCommands.Add(new Command(PERMISSION_SELF, OnShowPPU, "showppu")
             {
                 AllowServer = false,
@@ -121,6 +122,8 @@ namespace Bcat.TShockPlugins
 
         private static void SendPPUMessage(TSPlayer player, Dictionary<string, bool> ppus)
         {
+            // TODO(bcat): These lists can be quite long. We should wrap them across multiple
+            // messages if necessary. (Does TShock have a built-in mechanism for this?)
             player.SendInfoMessage(
                 $"Active: {string.Join(", ", ppus.Where(p => p.Value).Select(p => p.Key))}");
             player.SendInfoMessage(

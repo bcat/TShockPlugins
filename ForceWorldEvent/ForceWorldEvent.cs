@@ -18,9 +18,33 @@ using TShockAPI;
 
 namespace Bcat.TShockPlugins
 {
+    /// <summary>
+    /// Plugin that allows toggling continuous world events on and off.
+    /// 
+    /// <para>Defines the following commands:</para>
+    /// 
+    /// <list type="table">
+    /// <item>
+    ///     <term><c>/forceworldevent</c></term>
+    ///     <description>Toggles a forced world event on or off.</description>
+    /// </item>
+    /// </list>
+    /// 
+    /// <para>Uses the following permissions:</para>
+    /// 
+    /// <list type="table">
+    /// <item>
+    ///     <term><c>bcat.forceworldevent.rain</c></term>
+    ///     <description>Force the rain world event.</description>
+    /// </item>
+    /// </list>
+    /// </summary>
     [ApiVersion(2, 1)]
     public class ForceWorldEvent : TerrariaPlugin
     {
+        /// <summary>
+        /// TShock permission to force the rain world event.
+        /// </summary>
         private const string PERMISSION_RAIN = "bcat.forceworldevent.rain";
 
         public override string Name => "ForceWorldEvent";
@@ -53,6 +77,12 @@ namespace Bcat.TShockPlugins
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Toggles the specified forced world event on or off. Note that toggling a forced event
+        /// off does not immediately stop the event.
+        /// </summary>
+        /// 
+        /// <param name="e">arguments passed to the command.</param>
         private void OnForceWorldEvent(CommandArgs e)
         {
             if (e.Parameters.Count < 1)
@@ -77,6 +107,11 @@ namespace Bcat.TShockPlugins
             }
         }
 
+        /// <summary>
+        /// On each game tick, checks is any forced events have ended and restarts them if needed.
+        /// </summary>
+        /// 
+        /// <param name="e">ignored.</param>
         private void OnGameUpdate(EventArgs e)
         {
             if (forcedRain && !Main.raining)
