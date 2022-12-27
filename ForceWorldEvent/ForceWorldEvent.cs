@@ -19,7 +19,8 @@ using TShockAPI;
 namespace Bcat.TShockPlugins
 {
     /// <summary>
-    /// Plugin that allows toggling continuous world events on and off.
+    /// Plugin that allows toggling continuous world events on and off. (Currently only supports
+    /// rain.)
     /// 
     /// <para>Defines the following commands:</para>
     /// 
