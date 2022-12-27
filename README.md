@@ -7,20 +7,20 @@ folks to play around with.
 
 ## Plugin index
 
-I've divided the plugins into two categories: plugins that are "generally
-available" (feature complete and reasonably well tested) and those that are
-"early access" (lacking features, buggy, or otherwise incomplete).
-
 ### Generally available
 
-* ShowUpgrades: Plugin that shows the status of permanent player and world
-  upgrades.
+Should be feature complete and reasonably well tested.
+
+* [ShowUpgrades](ShowUpgrades): Plugin that shows the status of permanent player
+  and world upgrades.
 * TPBack: Plugin that adds a `/back` command to teleport to the player's
   previous position.
 * TPPylon: Plugin that adds a `/pylon` command to teleport the player to the
   specified pylon.
 
 ### Early access
+
+Likely to lack significant features.
 
 * ForceWorldEvent: Plugin that allows toggling continuous world events on and
   off. (Currently only supports rain.)
