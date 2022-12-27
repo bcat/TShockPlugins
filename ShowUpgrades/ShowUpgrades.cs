@@ -19,63 +19,65 @@ using TShockAPI;
 namespace Bcat.TShockPlugins
 {
     [ApiVersion(2, 1)]
-    public class ShowPPU : TerrariaPlugin
+    public class ShowUpgrades : TerrariaPlugin
     {
-        private const string PERMISSION_OTHERS = "bcat.showppu.others";
-        private const string PERMISSION_SELF = "bcat.showppu.self";
-        private const string PERMISSION_WORLD = "bcat.showppu.world";
+        private const string PERMISSION_OTHERS = "bcat.showupgrades.others";
+        private const string PERMISSION_SELF = "bcat.showupgrades.self";
+        private const string PERMISSION_WORLD = "bcat.showupgrades.world";
 
-        public override string Name => "ShowPPU";
+        public override string Name => "ShowUpgrades";
         public override Version Version => new(0, 1);
         public override string Author => "Jonathan Rascher";
-        public override string Description => "Plugin that lists players' permanent power-ups.";
+        public override string Description
+            => "Plugin that shows the status of permanent player and world upgrades.";
 
-        public ShowPPU(Main game) : base(game) { }
+        public ShowUpgrades(Main game) : base(game) { }
 
         public override void Initialize()
         {
-            // TODO(bcat): These command names are ugly and unintuitive. Choose better ones.
-            Commands.ChatCommands.Add(new Command(PERMISSION_SELF, OnShowPPU, "showppu")
+            Commands.ChatCommands.Add(new Command(PERMISSION_SELF, OnShowUpgrades, "showupgrades")
             {
+                // TODO(bcat): Allow the server to use the single-argument form of showupgrades.
                 AllowServer = false,
-                HelpText = "Shows a player's active permanent power-ups.",
+                HelpText = "Shows a player's permanent upgrades.",
             });
-            Commands.ChatCommands.Add(new Command(PERMISSION_WORLD, OnShowWorldPPU, "showworldppu")
-            {
-                HelpText = "Shows the world's active permanent power-ups.",
-            });
+            Commands.ChatCommands.Add(
+                new Command(PERMISSION_WORLD, OnShowWorldUpgrades, "showworldupgrades")
+                {
+                    HelpText = "Shows the world's permanent upgrades.",
+                });
         }
 
-        private void OnShowPPU(CommandArgs e)
+        private void OnShowUpgrades(CommandArgs e)
         {
             Dictionary<string, bool>? ppus;
 
             switch (e.Parameters.Count)
             {
                 case 0:
-                    ppus = GetPPUs(e.Player);
+                    ppus = GetUpgrades(e.Player);
                     break;
                 case 1:
-                    ppus = GetPPUs(e.Player, e.Parameters[0]);
+                    ppus = GetUpgrades(e.Player, e.Parameters[0]);
                     break;
                 default:
                     e.Player.SendErrorMessage(
-                        $"Invalid syntax. Proper syntax: {Commands.Specifier}showppu [player].");
+                        $"Invalid syntax. Proper syntax: {Commands.Specifier}showupgrades [player].");
                     return;
             }
 
             if (ppus != null)
             {
-                SendPPUMessage(e.Player, ppus);
+                SendUpgradeMessages(e.Player, ppus);
             }
         }
 
-        private static Dictionary<string, bool>? GetPPUs(TSPlayer player, String search)
+        private static Dictionary<string, bool>? GetUpgrades(TSPlayer player, String search)
         {
             if (!player.HasPermission(PERMISSION_OTHERS))
             {
                 player.SendErrorMessage(
-                    "You do not have permission to view other players' permanent power-ups.");
+                    "You do not have permission to view other players' permanent upgrades.");
                 return null;
             }
 
@@ -83,7 +85,7 @@ namespace Bcat.TShockPlugins
             switch (otherPlayers.Count)
             {
                 case 1:
-                    return GetPPUs(otherPlayers.Single());
+                    return GetUpgrades(otherPlayers.Single());
                 case 0:
                     player.SendErrorMessage("Invalid player.");
                     return null;
@@ -93,7 +95,7 @@ namespace Bcat.TShockPlugins
             }
         }
 
-        private static Dictionary<string, bool> GetPPUs(TSPlayer player)
+        private static Dictionary<string, bool> GetUpgrades(TSPlayer player)
         {
             return new Dictionary<string, bool>
             {
@@ -110,9 +112,9 @@ namespace Bcat.TShockPlugins
             };
         }
 
-        private static void OnShowWorldPPU(CommandArgs e)
+        private static void OnShowWorldUpgrades(CommandArgs e)
         {
-            SendPPUMessage(e.Player, new()
+            SendUpgradeMessages(e.Player, new()
             {
                 { "Advanced Combat Techniques", NPC.combatBookWasUsed},
                 { "Advanced Combat Techniques: Volume Two", NPC.combatBookVolumeTwoWasUsed},
@@ -120,7 +122,7 @@ namespace Bcat.TShockPlugins
             });
         }
 
-        private static void SendPPUMessage(TSPlayer player, Dictionary<string, bool> ppus)
+        private static void SendUpgradeMessages(TSPlayer player, Dictionary<string, bool> ppus)
         {
             // TODO(bcat): These lists can be quite long. We should wrap them across multiple
             // messages if necessary. (Does TShock have a built-in mechanism for this?)
