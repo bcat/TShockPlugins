@@ -138,7 +138,7 @@ namespace Bcat.TShockPlugins
         /// the player whose upgrades should be looked up.</param>
         /// <param name="search">TShock player search string.</param>
         /// <returns>a dictionary mapping upgrade names to statuses (<see langword="true"/> for
-        /// active, <see langword="false"/> for inactive). Will be <see langword="null"/> if the
+        /// used, <see langword="false"/> for not used). Will be <see langword="null"/> if the
         /// requesting player lacks appropriate permissions or the search does not yield a unique
         /// player.</returns>
         private static Dictionary<string, bool>? GetUpgrades(TSPlayer recipient, String search)
@@ -170,7 +170,7 @@ namespace Bcat.TShockPlugins
         /// 
         /// <param name="player">the player whose upgrades should be returned.</param>
         /// <returns>a dictionary mapping upgrade names to statuses (<see langword="true"/> for
-        /// active, <see langword="false"/> for inactive).</returns>
+        /// used, <see langword="false"/> for not used).</returns>
         private static Dictionary<string, bool> GetUpgrades(TSPlayer player)
         {
             return new Dictionary<string, bool>
@@ -183,6 +183,7 @@ namespace Bcat.TShockPlugins
                 { "Galaxy Pearl", player.TPlayer.usedGalaxyPearl },
                 { "Gummy Worm", player.TPlayer.usedGummyWorm },
                 { "Minecart Upgrade Kit", player.TPlayer.unlockedSuperCart },
+                { "Old One's Army", player.TPlayer.downedDD2EventAnyDifficulty },
                 { "Torch God's Favor", player.TPlayer.unlockedBiomeTorches },
                 { "Vital Crystal", player.TPlayer.usedAegisCrystal },
             };
@@ -204,19 +205,19 @@ namespace Bcat.TShockPlugins
         }
 
         /// <summary>
-        /// Sends lists of active and inactive permanent upgrades to the specified player.
+        /// Sends lists of used and not used permanent upgrades to the specified player.
         /// </summary>
         /// 
         /// <param name="recipient">the player to whom messages should be sent.</param>
         /// <param name="upgrades">a dictionary mapping upgrade names to statuses
-        /// (<see langword="true"/> for active, <see langword="false"/> for inactive).</param>
+        /// (<see langword="true"/> for used, <see langword="false"/> for not used).</param>
         private static void SendUpgradeMessages(
             TSPlayer recipient, Dictionary<string, bool> upgrades)
         {
             WrapList(recipient.SendInfoMessage, upgrades.Where(u => u.Value).Select(u => u.Key),
-                prefix: "Active: ");
+                prefix: "Used: ");
             WrapList(recipient.SendInfoMessage, upgrades.Where(u => !u.Value).Select(u => u.Key),
-                prefix: "Inactive: ");
+                prefix: "Not used: ");
         }
 
         /// <summary>

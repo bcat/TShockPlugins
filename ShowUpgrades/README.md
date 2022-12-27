@@ -13,20 +13,20 @@ players.
 
 ### `/showupgrades`
 
-Shows the current player's permanent upgrades. Active and inactive upgrades will
-be listed separately.
+Shows the current player's permanent upgrades. Used (unlocked) and not used
+(locked) upgrades will be listed separately.
 
 ### `/showupgrades <player>`
 
-Shows the specified player's permanent upgrades. Active and inactive upgrades
-will be listed separately. The `<player>` parameter follows standard TShock
-syntax and may be a player name (e.g., `Silvarren`), name prefix (e.g., `sil`
-for `Silvarren`), or ID (e.g., `0`).
+Shows the specified player's permanent upgrades. Used (unlocked) and not used
+(locked) upgrades will be listed separately. The `<player>` parameter follows
+standard TShock syntax and may be a player name (e.g., `Silvarren`), name prefix
+(e.g., `sil` for `Silvarren`), or ID (e.g., `0`).
 
 ### `/showworldupgrades`
 
-Shows the world's permanent upgrades. Active and inactive upgrades will be
-listed separately.
+Shows the world's permanent upgrades. Used (unlocked) and not used (locked) upgrades
+will be listed separately.
 
 ## Permissions
 
