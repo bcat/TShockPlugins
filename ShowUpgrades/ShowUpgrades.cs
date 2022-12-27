@@ -71,9 +71,9 @@ namespace Bcat.TShockPlugins
         private const string PERMISSION_WORLD = "bcat.showupgrades.world";
 
         /// <summary>
-        /// Maxiumum line length for <see cref="WrapList"/>.
+        /// Target line length for <see cref="WrapList"/>.
         /// </summary>
-        private const int MAX_LINE_LENGTH = 100;
+        private const int MESSAGE_LINE_LENGTH = 100;
 
         public override string Name => "ShowUpgrades";
         public override Version Version => new(1, 0);
@@ -220,18 +220,20 @@ namespace Bcat.TShockPlugins
         }
 
         /// <summary>
-        /// Wraps a list of values to at most <see cref="MAX_LINE_LENGTH"/> characters per line.
+        /// Wraps a list of values to approximately <see cref="MESSAGE_LINE_LENGTH"/> characters per
+        /// line. Does not guarantee exact wrapping, but should be sufficient to avoid lines longer
+        /// than the average client window.
         /// </summary>
         /// 
         /// <param name="sendLine">callback invoked for each line.</param>
-        /// <param name="values">the values to be wrapped.</param>
-        /// <param name="prefix">string to be prepened to the first line (as long as the list is
-        /// nonempty).</param>
+        /// <param name="values">the values to be wrapped. If empty, no lines will sent.</param>
+        /// <param name="prefix">string to be prepened to the first line.</param>
+        /// <param name="continuation">string to be prepened to each line after the first.</param>
         /// <param name="separator">string to be included between values.</param>
         private static void WrapList(Action<string> sendLine, IEnumerable<string> values,
-            string prefix = "", string separator = ", ")
+            string prefix = "", string continuation = "    ", string separator = ", ")
         {
-            StringBuilder messageBuilder = new(prefix, MAX_LINE_LENGTH);
+            StringBuilder messageBuilder = new(MESSAGE_LINE_LENGTH);
 
             foreach (string value in values)
             {
@@ -240,9 +242,9 @@ namespace Bcat.TShockPlugins
                     // Add at least one list item per line, even if it exceeds the max length.
                     messageBuilder.Append(prefix);
                     messageBuilder.Append(value);
-                    prefix = ""; // Include prefix on first line only.
                 }
-                else if (messageBuilder.Length + separator.Length + value.Length <= MAX_LINE_LENGTH)
+                else if (messageBuilder.Length + separator.Length + value.Length
+                    <= MESSAGE_LINE_LENGTH)
                 {
                     // If the next list item fits on the current line, simply append it.
                     messageBuilder.Append(separator);
@@ -252,8 +254,10 @@ namespace Bcat.TShockPlugins
                 {
                     // Otherwise, send the current line and start building the next one. (Again,
                     // always add at least one list item per line, regardless of length.)
+                    messageBuilder.Append(separator);
                     sendLine(messageBuilder.ToString());
                     messageBuilder.Clear();
+                    messageBuilder.Append(continuation);
                     messageBuilder.Append(value);
                 }
             }
