@@ -15,8 +15,8 @@ Should be feature complete and reasonably well tested.
   and world upgrades.
 * TPBack: Plugin that adds a `/back` command to teleport to the player's
   previous position.
-* TPPylon: Plugin that adds a `/pylon` command to teleport the player to the
-  specified pylon.
+* [TPPylon](TPPylon): Plugin that adds a `/pylon` command to teleport the player
+  to the specified pylon.
 
 ### Early access
 
