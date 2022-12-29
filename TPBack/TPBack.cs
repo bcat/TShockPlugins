@@ -84,18 +84,18 @@ namespace Bcat.TShockPlugins
                     = "Teleports you back to your previous location (before your last teleport).",
             });
 
-            GetDataHandlers.PlayerSpawn += OnSpawn;
-            ServerApi.Hooks.NetSendData.Register(this, OnSendData);
-            ServerApi.Hooks.GamePostUpdate.Register(this, OnPostUpdate);
+            GetDataHandlers.PlayerSpawn += OnPlayerSpawn;
+            ServerApi.Hooks.NetSendData.Register(this, OnNetSendData);
+            ServerApi.Hooks.GamePostUpdate.Register(this, OnGamePostUpdate);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                ServerApi.Hooks.GamePostUpdate.Deregister(this, OnPostUpdate);
-                ServerApi.Hooks.NetSendData.Deregister(this, OnSendData);
-                GetDataHandlers.PlayerSpawn -= OnSpawn;
+                ServerApi.Hooks.GamePostUpdate.Deregister(this, OnGamePostUpdate);
+                ServerApi.Hooks.NetSendData.Deregister(this, OnNetSendData);
+                GetDataHandlers.PlayerSpawn -= OnPlayerSpawn;
             }
             base.Dispose(disposing);
         }
@@ -142,7 +142,7 @@ namespace Bcat.TShockPlugins
         /// <param name="sender">ignored.</param>
         /// <param name="e">arguments from received
         /// <see cref="PacketTypes.PlayerSpawn"><c>PlayerSpawn</c> packet</see>.</param>
-        private static void OnSpawn(object? sender, GetDataHandlers.SpawnEventArgs e)
+        private static void OnPlayerSpawn(object? sender, GetDataHandlers.SpawnEventArgs e)
         {
             // On connect, the client sends a PlayerSpawn packet that we ignore since there's no
             // meaningful previous position to save.
@@ -181,7 +181,7 @@ namespace Bcat.TShockPlugins
         /// </summary>
         /// 
         /// <param name="e">arguments from sent packet.</param>
-        private static void OnSendData(SendDataEventArgs e)
+        private static void OnNetSendData(SendDataEventArgs e)
         {
             if (e.MsgId != PacketTypes.Teleport)
             {
@@ -251,7 +251,7 @@ namespace Bcat.TShockPlugins
         /// </summary>
         /// 
         /// <param name="e">ignored.</param>
-        private static void OnPostUpdate(EventArgs e)
+        private static void OnGamePostUpdate(EventArgs e)
         {
             for (int i = 0; i < Main.maxPlayers; ++i)
             {
