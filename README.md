@@ -20,8 +20,10 @@ Should be feature complete and reasonably well tested.
 
 ### Early access
 
-Likely to lack significant features.
+Likely to lack significant features and/or testing.
 
+* CheeseTravel: Plugin that allows cheesing the Traveling Merchant's RNG. (Not
+  well tested yet.)
 * ForceWorldEvent: Plugin that allows toggling continuous world events on and
   off. (Currently only supports rain.)
 * PartyOnJoin: Plugin that automatically adds players to the correct party on

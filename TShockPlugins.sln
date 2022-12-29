@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1C60A4D8-E61
 		lib\TShockAPI.dll = lib\TShockAPI.dll
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheeseTravel", "CheeseTravel\CheeseTravel.csproj", "{0EE4D8BC-69C3-4743-91E1-B94651CDB792}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForceWorldEvent", "ForceWorldEvent\ForceWorldEvent.csproj", "{589B49EF-4614-470E-8572-4FCB6B37E8CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartyOnJoin", "PartyOnJoin\PartyOnJoin.csproj", "{46A3B914-11D2-43FB-AB61-4C21607A1406}"
@@ -54,6 +56,10 @@ Global
 		{D2E0C2AA-7B4E-4A67-8E9D-7851857C922E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2E0C2AA-7B4E-4A67-8E9D-7851857C922E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2E0C2AA-7B4E-4A67-8E9D-7851857C922E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE4D8BC-69C3-4743-91E1-B94651CDB792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE4D8BC-69C3-4743-91E1-B94651CDB792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE4D8BC-69C3-4743-91E1-B94651CDB792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE4D8BC-69C3-4743-91E1-B94651CDB792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
