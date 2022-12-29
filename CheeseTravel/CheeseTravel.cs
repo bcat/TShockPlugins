@@ -46,8 +46,9 @@ namespace Bcat.TShockPlugins
         /// TShock permission to use the <c>/spawntravel</c> command.
         /// </summary>
         private const string PERMISSION_SPAWN = "bcat.cheesetravel.spawn";
+
         public override string Name => "CheeseTravel";
-        public override Version Version => new(0, 1);
+        public override Version Version => new(1, 0);
         public override string Author => "Jonathan Rascher";
         public override string Description
             => "Plugin that allows cheesing the Traveling Merchant's RNG.";
@@ -67,7 +68,7 @@ namespace Bcat.TShockPlugins
         }
 
         /// <summary>
-        /// Re-randomizes the Traveling Merchant's inventory, if present. 
+        /// Re-randomizes the Traveling Merchant's inventory, if present.
         /// </summary>
         /// 
         /// <param name="e">arguments passed to the command.</param>
@@ -86,7 +87,7 @@ namespace Bcat.TShockPlugins
         }
 
         /// <summary>
-        /// Spawns the Traveling Merchant, if not already present. 
+        /// Spawns the Traveling Merchant, if not already present.
         /// </summary>
         /// 
         /// <param name="e">arguments passed to the command.</param>
