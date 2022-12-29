@@ -99,7 +99,7 @@ namespace Bcat.TShockPlugins
                 case "rain":
                     forcedRain = !forcedRain;
                     e.Player.SendSuccessMessage(
-                        "Rain is now" + (forcedRain ? "" : " not") + " forced");
+                        $"Rain is now {(forcedRain ? "forced" : "not forced")}.");
                     break;
 
                 default:
