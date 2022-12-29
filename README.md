@@ -13,7 +13,7 @@ Should be feature complete and reasonably well tested.
 
 * [ShowUpgrades](ShowUpgrades): Plugin that shows the status of permanent player
   and world upgrades.
-* TPBack: Plugin that adds a `/back` command to teleport to the player's
+* [TPBack](TPBack): Plugin that adds a `/back` command to teleport to the player's
   previous position.
 * [TPPylon](TPPylon): Plugin that adds a `/pylon` command to teleport the player
   to the specified pylon.
